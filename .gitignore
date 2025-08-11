@@ -39,6 +39,9 @@ npm-debug.log
 /.hex
 /.mix
 
+# Erlang history
+/.erlang_history
+
 # Database files
 /pgdata
 
