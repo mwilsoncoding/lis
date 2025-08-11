@@ -1,0 +1,12 @@
+<div>
+  <.form :let={f} for={@form} id="person-form" action={~p"/persons"} method="post">
+    <.input field={f[:name]} type="text" label="Name" required />
+    <.input field={f[:age]} type="number" label="Age" />
+    <.input field={f[:title]} type="text" label="Title" required />
+    <.input field={f[:hometown]} type="text" label="Hometown" />
+    <div>
+      <.link href={~p"/persons"} class="btn btn-secondary">Back</.link>
+      <.button class="btn btn-primary">Save</.button>
+    </div>
+  </.form>
+</div>
