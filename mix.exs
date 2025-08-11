@@ -27,6 +27,7 @@ defmodule LIS.MixProject do
 
   def cli do
     [
+      default_task: "phx.server",
       preferred_envs: [precommit: :test]
     ]
   end
