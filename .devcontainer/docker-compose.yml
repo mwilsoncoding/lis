@@ -14,24 +14,12 @@ services:
       - devcontainer.env
     volumes:
       - ../:/workspace:cached
-    depends_on:
-      # - otel-collector
-      - postgres
-    links:
-      # - otel-collector
-      - postgres
+    # depends_on:
+    # - otel-collector
+    # links:
+    # - otel-collector
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-  postgres:
-    ports:
-      - 5432:5432
-    image: postgres:${POSTGRES_VERSION}
-    restart: unless-stopped
-    volumes:
-      - ../pgdata:/var/lib/postgresql/data:cached
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
 
 # otel-collector:
 #   image: otel/opentelemetry-collector-contrib:latest

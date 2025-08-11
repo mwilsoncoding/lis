@@ -21,7 +21,7 @@ config :lis, LISWeb.Endpoint,
     layout: false
   ],
   pubsub_server: LIS.PubSub,
-  live_view: [signing_salt: "tN3U99gv"]
+  live_view: [signing_salt: "AjuIJne/"]
 
 # Configure esbuild (the version is required)
 config :esbuild,

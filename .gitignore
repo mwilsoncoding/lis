@@ -43,7 +43,7 @@ npm-debug.log
 /.erlang_history
 
 # Database files
-/pgdata
+/db
 
 # LSP
 /.elixir_ls

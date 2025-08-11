@@ -37,7 +37,7 @@
   },
   "remoteUser": "vscode",
   "features": {
-    // debian-trixie no longer contains `eterm`, which is required for desktop-lite
+    // debian-trixie no longer contains `eterm`, which is required for desktop-lit
     // "ghcr.io/devcontainers/features/desktop-lite": {},
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}

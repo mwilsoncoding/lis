@@ -7,7 +7,7 @@ defmodule LISWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_lis_key",
-    signing_salt: "qqYSHxzc",
+    signing_salt: "sfmQw/MK",
     same_site: "Lax"
   ]
 

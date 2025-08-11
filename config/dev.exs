@@ -2,13 +2,10 @@ import Config
 
 # Configure your database
 config :lis, LIS.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "postgres",
-  database: "lis_dev",
+  database: Path.expand("../db/dev/lis.db", __DIR__),
+  pool_size: 5,
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  show_sensitive_data_on_connection_error: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -24,7 +21,7 @@ config :lis, LISWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "yk1rRas/DDrCdSLnO+n6frUxxeACFmNaPHPimGBzhQPeS4q0baNkJD/MOjiFL0LU",
+  secret_key_base: "kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:lis, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:lis, ~w(--watch)]}

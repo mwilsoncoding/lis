@@ -3,7 +3,6 @@ ARG OTP_VERSION
 ARG DEBIAN_VERSION
 ARG LEFTHOOK_VERSION
 ARG YAMLFMT_VERSION
-ARG PSQL_VERSION
 FROM hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}
 
 ARG USERNAME=vscode
@@ -19,15 +18,10 @@ RUN apt-get update \
       inotify-tools \
       jq \
       libwxgtk-gl3.2-1 \
-      postgresql-common \
+      sqlite3 \
       shellcheck \
       sudo \
       2>&1
-
-ARG PSQL_VERSION
-RUN /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y \
-  && apt-get -y install --no-install-recommends \
-      postgresql-client-${PSQL_VERSION}
 
 RUN if id -u ${USERNAME} > /dev/null 2>&1 ; then \
       if [ "${USER_GID}" != "automatic" ] && [ "$USER_GID" != "$(id -g $USERNAME)" ]; then \
