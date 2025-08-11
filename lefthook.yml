@@ -1,0 +1,21 @@
+pre-commit:
+  follow: true
+  jobs:
+    - name: elixir-format
+      glob: "*.{ex,exs,heex}"
+      run: mix format --check-formatted {staged_files}
+    - name: elixir-test
+      glob: "*.{ex,exs,heex}"
+      run: mix test
+    - name: elixir-lint
+      glob: "*.{ex,exs,heex}"
+      run: mix credo --strict
+    - name: elixir-audit
+      glob: "mix.lock"
+      run: mix deps.audit
+    - name: yamlfmt
+      glob: "*.{yml,yaml}"
+      run: yamlfmt -lint {staged_files}
+    - name: shellcheck
+      glob: "*.{sh,bash}"
+      run: shellcheck {staged_files}

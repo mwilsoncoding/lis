@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+PROJECT_NAME="${PROJECT_NAME:-.}"
+
+overlay_dir="${PROJECT_NAME}/rel/overlays"
+mkdir -p "${overlay_dir}"
+for e in dev test prod ; do
+  env_file="${overlay_dir}/${e}.local.env"
+  if ! [ -f "${env_file}" ] ; then
+    echo "Creating ${env_file} ..."
+    touch "${env_file}"
+  fi
+done
+
+# Avoid dubious ownership
+git config \
+  --global \
+  --add safe.directory "${WORKSPACE}"
+
+# Set default git pull strategy
+git config pull.rebase false
+
+lefthook install
+
+cd "${PROJECT_NAME}"
+
+# shellcheck disable=SC1010
+mix do local.hex --force --if-missing + \
+       local.rebar --force --if-missing
