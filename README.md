@@ -8,6 +8,8 @@ There are many ways to run this application. Here are 3 options:
 
 ### Codespaces
 
+Note: Codespaces service disruptions may cause 502s unrelated to the demo application's performance.
+
 Steps:
 
 - Click the `Code` button on the main page of this repository.
@@ -41,6 +43,8 @@ Prerequisites:
 
 Steps:
 
+- Clone this repository to your local machine.
+- `cd` into the new directory.
 - Execute the following commands to build and start the server:
 
   ```console
@@ -68,6 +72,8 @@ Prerequisites:
 
 Steps:
 
+- Clone this repository to your local machine.
+- `cd` into the new directory.
 - Execute the following commands to build and start the server:
   ```console
   MIX_ENV=prod \
