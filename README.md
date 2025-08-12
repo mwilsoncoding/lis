@@ -1,18 +1,74 @@
 # LIS
 
-To start your Phoenix server:
+This repository contains my demo web application for an interview with the Legislative Information Systems agency.
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## How to Run
+
+There are many ways to run this application. Here are 3 options:
+
+### Codespaces
+
+Steps:
+
+- Click the `Code` button on the main page of this repository.
+- Select the `Codespaces` tab in the drop-down.
+- Click the button to create a codespace on main.
+- A new tab will open where your codespace is created.
+- Once the editor finishes loading, execute the following commands to build and start the server:
+  ```console
+  MIX_ENV=prod mix release 
+  _build/dev/rel/lis/bin/server
+  ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+#### Codespaces - Teardown
 
-## Learn more
+- Close the web browser tab containing the editor. At the time of this writing, GitHub only charges for the time that it is "on". The current default behavior is for the codespace to stop after 30 minutes of inactivity and to be deleted after 30 days of inactivity.
 
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+### Docker
+
+Prerequisites:
+
+- Install [Docker](https://www.docker.com/)
+
+Steps:
+
+- Execute the following commands to build and start the server:
+
+  ```console
+  docker build -t lis .
+  docker run \
+    --rm \
+    -it \
+    -p 4000:4000 \
+    -e DATABASE_PATH=/tmp/lis/lis.db \
+    -e SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
+    lis
+  ```
+
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+#### Docker - Teardown
+
+- Press `Ctrl+C` in the terminal running the application to stop it.
+
+### Bare Metal
+
+Prerequisites:
+
+- Install [Elixir](https://elixir-lang.org/install.html) v1.8.4 on top of [Erlang](https://elixir-lang.org/install.html#installing-erlang) v28.0.2
+
+Steps:
+
+- Execute the following commands to build and start the server:
+  ```console
+  MIX_ENV=prod mix release 
+  _build/dev/rel/lis/bin/server
+  ```
+
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+#### Bare Metal - Teardown
+
+- Press `Ctrl+C` in the terminal running the application to stop it.
