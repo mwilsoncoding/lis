@@ -1,0 +1,11 @@
+<div class="px-8 pb-8">
+  <div>
+    <.link href={~p"/persons"} class="btn btn-secondary">List</.link>
+  </div>
+  <div class="place-items-center">
+    <h1>{@person.name}</h1>
+    <p :if={not is_nil(Map.get(@person, :age))}>Age: {@person.age}</p>
+    <p>Title: {@person.title}</p>
+    <p :if={not is_nil(Map.get(@person, :hometown))}>Hometown: {@person.hometown}</p>
+  </div>
+</div>

@@ -14,11 +14,15 @@ defmodule LISWeb.PersonController do
     render(conn, :new, form: %{})
   end
 
+  def show(conn, %{"id" => id}) do
+    person = LIS.Demographics.get_person!(id)
+    render(conn, :show, person: person)
+  end
+
   def create(conn, %{} = params) do
     case LIS.Demographics.create_person(params) do
       {:ok, %LIS.Demographics.Person{} = person} ->
         conn
-        |> put_flash(:info, "Person created successfully.")
         |> put_session(:newly_created_person, person)
         |> redirect(to: ~p"/persons")
 

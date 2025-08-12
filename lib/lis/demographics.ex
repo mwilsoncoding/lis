@@ -8,6 +8,8 @@ defmodule LIS.Demographics do
 
   alias LIS.Demographics.Person
 
+  @page_size 100
+
   @doc """
   Returns the list of persons.
 
@@ -19,6 +21,18 @@ defmodule LIS.Demographics do
   """
   def list_persons do
     Repo.all(Person)
+
+    %{
+      sorter: [desc: :inserted_at]
+    }
+    |> list_persons()
+  end
+
+  def list_persons(%{} = opts) do
+    with limit <- opts[:limit] || @page_size,
+         sorter <- opts[:sorter] || [desc: :inserted_at] do
+      Repo.all(from p in Person, limit: ^limit, order_by: ^sorter)
+    end
   end
 
   @doc """
