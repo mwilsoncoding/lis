@@ -1,30 +1,28 @@
-<div>
-  <div :if={@new_person}>
-    <p>New person:</p>
-    <.list>
-      <:item title="Name">{@new_person.name}</:item>
-      <:item :if={Map.has_key?(@new_person, :age)} title="Age">{@new_person.age}</:item>
-      <:item title="Title">{@new_person.title}</:item>
-      <:item :if={Map.has_key?(@new_person, :hometown)} title="Hometown">
-        {@new_person.hometown}
-      </:item>
-    </.list>
-  </div>
+<div class="px-8 pb-8">
   <div>
-    <p>New person:</p>
-    <.list>
-      <:item title="Name">bob</:item>
-      <:item title="Age">30</:item>
-      <:item title="Title">Developer</:item>
-      <:item title="Hometown">New York</:item>
-    </.list>
+    <.link href={~p"/persons/new"} class="btn btn-secondary">New</.link>
   </div>
-  <.table id="persons" rows={@persons}>
-    <:col :let={person} label="Name">
-      <.link href={~p"/persons/#{person.id}"}>{person.name}</.link>
-    </:col>
-    <:col :let={person} label="Age">{person.age}</:col>
-    <:col :let={person} label="Title">{person.title}</:col>
-    <:col :let={person} label="Hometown">{person.hometown}</:col>
-  </.table>
+  <div :if={@new_person}>
+    <div class="stat place-items-center">
+      <div class="stat-title">New person:</div>
+      <div class="stat-value">
+        <p>Name: {@new_person.name}</p>
+        <% age = Map.get(@new_person, :age) %>
+        <p :if={not is_nil(age)}>Age: {age}</p>
+        <p>Title: {@new_person.title}</p>
+        <% hometown = Map.get(@new_person, :hometown) %>
+        <p :if={not is_nil(hometown)}>Hometown: {hometown}</p>
+      </div>
+    </div>
+  </div>
+  <div class="table">
+    <.table id="persons" rows={@persons}>
+      <:col :let={person} label="Name">
+        <.link href={~p"/persons/#{person.id}"}>{person.name}</.link>
+      </:col>
+      <:col :let={person} label="Age">{person.age}</:col>
+      <:col :let={person} label="Title">{person.title}</:col>
+      <:col :let={person} label="Hometown">{person.hometown}</:col>
+    </.table>
+  </div>
 </div>

@@ -1,12 +1,24 @@
-<div>
-  <.form :let={f} for={@form} id="person-form" action={~p"/persons"} method="post">
-    <.input field={f[:name]} type="text" label="Name" required />
-    <.input field={f[:age]} type="number" label="Age" />
-    <.input field={f[:title]} type="text" label="Title" required />
-    <.input field={f[:hometown]} type="text" label="Hometown" />
-    <div>
-      <.link href={~p"/persons"} class="btn btn-secondary">Back</.link>
-      <.button class="btn btn-primary">Save</.button>
-    </div>
-  </.form>
+<div class="px-8 pb-8">
+  <div>
+    <.link href={~p"/persons"} class="btn btn-secondary">List</.link>
+  </div>
+  <div class="pt-8 w-100">
+    <.form :let={f} for={@form} id="person-form" action={~p"/persons"} method="post">
+      <label class="input">
+        <.input field={f[:name]} type="text" label="Name" required class="grow" />
+      </label>
+      <label class="input">
+        <.input field={f[:age]} type="number" label="Age" class="grow" />
+      </label>
+      <label class="input">
+        <.input field={f[:title]} type="text" label="Title" required class="grow" />
+      </label>
+      <label class="input">
+        <.input field={f[:hometown]} type="text" label="Hometown" class="grow" />
+      </label>
+      <div class="pt-8">
+        <.button class="btn btn-success">Save</.button>
+      </div>
+    </.form>
+  </div>
 </div>
