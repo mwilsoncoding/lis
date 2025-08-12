@@ -27,11 +27,11 @@ To visit the application in your browser:
 
 - Click the `PORTS` tab in the code editor.
 - Find port 4000 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
-- A
+- A new tab will open connected to the running application on the correct port.
 
 #### Codespaces - Teardown
 
-- Close the web browser tab containing the editor. At the time of this writing, GitHub only charges for the time that it is "on". The current default behavior is for the codespace to stop after 30 minutes of inactivity and to be deleted after 30 days of inactivity.
+- Close the web browser tabs containing the editor and the application. At the time of this writing, GitHub only charges for the time that it is "on". The current default behavior is for the codespace to stop after 30 minutes of inactivity and to be deleted after 30 days of inactivity.
 
 ### Docker
 
