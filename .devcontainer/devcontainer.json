@@ -24,7 +24,7 @@
       }
     }
   },
-  "forwardPorts": [6080,16686,5432],
+  "forwardPorts": [6080,16686,4000],
   "postCreateCommand": ".devcontainer/postCreateCommand",
   "postStartCommand": ".devcontainer/postStartCommand",
   "remoteEnv": {

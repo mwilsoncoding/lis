@@ -16,11 +16,18 @@ Steps:
 - A new tab will open where your codespace is created.
 - Once the editor finishes loading, execute the following commands to build and start the server:
   ```console
-  MIX_ENV=prod mix release 
-  _build/dev/rel/lis/bin/server
+  MIX_ENV=prod \
+    mix do phx.digest + release 
+  DATABASE_PATH=/tmp/lis/lis.db \
+  SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
+  _build/prod/rel/lis/bin/server
   ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+To visit the application in your browser:
+
+- Click the `PORTS` tab in the code editor.
+- Find port 4000 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
+- A
 
 #### Codespaces - Teardown
 
@@ -63,8 +70,11 @@ Steps:
 
 - Execute the following commands to build and start the server:
   ```console
-  MIX_ENV=prod mix release 
-  _build/dev/rel/lis/bin/server
+  MIX_ENV=prod \
+    mix do phx.digest + release 
+  DATABASE_PATH=/tmp/lis/lis.db \
+  SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
+  _build/prod/rel/lis/bin/server
   ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
