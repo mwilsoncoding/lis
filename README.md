@@ -82,3 +82,17 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 #### Bare Metal - Teardown
 
 - Press `Ctrl+C` in the terminal running the application to stop it.
+
+## Navigating the Demo App
+
+When you first visit the root page, `/`, you will be redirected to the data entry page, `/persons/new`.
+
+The data entry page displays a form for entering demographic data about a person.
+
+Tooltip errors appear when you click the `Save` button without any information in the `Name` or `Title` fields.
+
+Clicking the `List` button takes you to the `/persons` endpoint without saving any information entered into the form.
+
+Clicking the `Save` button with data in the required fields will result in a new `Person` added into the system. You will be redirected to a confirmation page displaying the newly entered information with a table of previous entries.
+
+On the `/persons` page, clicking any value under the `Name` column in the table of `Person`s will take you to a page displaying only that `Person`'s information.
