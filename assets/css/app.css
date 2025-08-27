@@ -1,6 +1,15 @@
 /* See the Tailwind configuration guide for advanced usage
    https://tailwindcss.com/docs/configuration */
 
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/fonts/eb-garamond-regular.ttf');
+}
+
+.garamond {
+  font-family: 'EB Garamond'
+}
+
 @import "tailwindcss" source(none);
 @source "../css";
 @source "../js";
