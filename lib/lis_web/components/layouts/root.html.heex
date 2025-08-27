@@ -30,19 +30,18 @@
       })();
     </script>
   </head>
-  <body class="garamond">
-    <header class="hero">
+  <body>
+    <header class="hero bg-dark">
       <div class="hero-content">
         <a href="/">
           <img
-            src={~p"/images/home-logo-large.png"}
+            id="home-logo"
+            src={~p"/images/home-logo-large-dark.png"}
             alt="Legislative Information Systems Logo"
-            class=""
           />
         </a>
       </div>
     </header>
-    <Layouts.flash_group flash={@flash} />
     {@inner_content}
   </body>
 </html>
