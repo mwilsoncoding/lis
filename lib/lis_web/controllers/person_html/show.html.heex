@@ -1,11 +1,20 @@
-<div class="px-8 pb-8">
+<Layouts.app flash={@flash}>
   <div>
     <.link href={~p"/persons"} class="btn btn-secondary">List</.link>
   </div>
-  <div class="place-items-center">
-    <h1>{@person.name}</h1>
-    <p :if={not is_nil(Map.get(@person, :age))}>Age: {@person.age}</p>
-    <p>Title: {@person.title}</p>
-    <p :if={not is_nil(Map.get(@person, :hometown))}>Hometown: {@person.hometown}</p>
+  <div class="py-4 flex w-full flex-col lg:flex-row">
+    <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
+      <p class="label">Name</p>
+      <p :if={not is_nil(Map.get(@person, :age))} class="label">Age</p>
+      <p class="label">Title</p>
+      <p :if={not is_nil(Map.get(@person, :hometown))} class="label">Hometown</p>
+    </div>
+    <div class="divider divider-horizontal" />
+    <div class="card bg-base-300 rounded-box grid h-32 grow place-items-center">
+      <p>{@person.name}</p>
+      <p :if={not is_nil(Map.get(@person, :age))}>{@person.age}</p>
+      <p>{@person.title}</p>
+      <p :if={not is_nil(Map.get(@person, :hometown))}>{@person.hometown}</p>
+    </div>
   </div>
-</div>
+</Layouts.app>

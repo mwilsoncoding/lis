@@ -1,4 +1,4 @@
-<div class="px-8 pb-8">
+<Layouts.app flash={@flash}>
   <div>
     <.link href={~p"/persons/new"} class="btn btn-secondary">New</.link>
   </div>
@@ -15,14 +15,12 @@
       </div>
     </div>
   </div>
-  <div class="table">
-    <.table id="persons" rows={@persons}>
-      <:col :let={person} label="Name">
-        <.link href={~p"/persons/#{person.id}"}>{person.name}</.link>
-      </:col>
+  <div class="table py-4">
+    <.table id="persons" rows={@persons} row_click={&JS.navigate(~p"/persons/#{&1.id}")}>
+      <:col :let={person} label="Name">{person.name}</:col>
       <:col :let={person} label="Age">{person.age}</:col>
       <:col :let={person} label="Title">{person.title}</:col>
       <:col :let={person} label="Hometown">{person.hometown}</:col>
     </.table>
   </div>
-</div>
+</Layouts.app>
