@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :lis, LIS.Repo,
-  database: Path.expand("../db/dev/lis.db", __DIR__),
+  database: Path.expand("../rel/overlays/db/dev/lis.db", __DIR__),
   pool_size: 5,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true
