@@ -16,11 +16,15 @@
         "phoenix-liveview-snippets.phoenix-liveview-snippets",
         "phoenixframework.phoenix",
         "redhat.vscode-yaml",
+        "bradlc.vscode-tailwindcss",
         "timonwong.shellcheck",
         "tomoki1207.pdf"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.associations": {
+          "*.css": "tailwindcss"
+        }
       }
     }
   },
