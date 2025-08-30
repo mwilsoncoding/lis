@@ -7,17 +7,16 @@ defmodule LIS.DemographicsFixtures do
   @doc """
   Generate a person.
   """
-  def person_fixture(attrs \\ %{}) do
-    {:ok, person} =
-      attrs
-      |> Enum.into(%{
+  def person_fixture(scope, attrs \\ %{}) do
+    attrs =
+      Enum.into(attrs, %{
         age: 42,
         hometown: "some hometown",
         name: "some name",
         title: "some title"
       })
-      |> LIS.Demographics.create_person()
 
+    {:ok, person} = LIS.Demographics.create_person(scope, attrs)
     person
   end
 end

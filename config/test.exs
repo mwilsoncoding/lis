@@ -1,5 +1,8 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :bcrypt_elixir, :log_rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -16,6 +19,12 @@ config :lis, LISWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "TntIXUNxcS7NQj8GoCzHTsTBmbfE5N8QynvKnLd0C6cItXiMUeZaUVPCA8vtNXnz",
   server: false
+
+# In test we don't send emails
+config :lis, LIS.Mailer, adapter: Swoosh.Adapters.Test
+
+# Disable swoosh api client as it is only required for production adapters
+config :swoosh, :api_client, false
 
 # Print only warnings and errors during test
 config :logger, level: :warning

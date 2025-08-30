@@ -35,12 +35,51 @@ defmodule LISWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1" />
-      <div class="flex-none">
+    <header class="navbar px-4 sm:px-6 lg:px-8 items-start">
+      <ul class="menu menu-horizontal w-full relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
+        <%= if @current_scope do %>
+          <li>
+            {@current_scope.user.email}
+          </li>
+          <li>
+            <.link href={~p"/users/settings"}>Settings</.link>
+          </li>
+          <li>
+            <.link href={~p"/users/log-out"} method="delete">Log out</.link>
+          </li>
+        <% else %>
+          <li>
+            <.link href={~p"/users/register"}>Register</.link>
+          </li>
+          <li>
+            <.link href={~p"/users/log-in"}>Log in</.link>
+          </li>
+        <% end %>
+      </ul>
+      <div class="flex-none pt-2">
         <ul class="flex flex-column px-1 space-x-4 items-center">
           <li>
             <.theme_toggle />
+            <div class="label">Font Family</div>
+            <.input
+              phx-change={JS.dispatch("lis:set-font-family")}
+              class="w-full hover:bg-base-300 rounded"
+              type="select"
+              id="font-family"
+              name="font-family"
+              value="EB Garamond"
+              options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
+            />
+            <div class="label">Font Size</div>
+            <.input
+              phx-change={JS.dispatch("lis:set-font-size")}
+              class="w-full hover:bg-base-300 rounded"
+              type="select"
+              id="font-size"
+              name="font-size"
+              value="100"
+              options={["100%": 100, "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
+            />
           </li>
         </ul>
       </div>
