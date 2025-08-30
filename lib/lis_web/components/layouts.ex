@@ -56,33 +56,6 @@ defmodule LISWeb.Layouts do
           </li>
         <% end %>
       </ul>
-      <div class="flex-none pt-2">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <.theme_toggle />
-            <div class="label">Font Family</div>
-            <.input
-              phx-change={JS.dispatch("lis:set-font-family")}
-              class="w-full hover:bg-base-300 rounded"
-              type="select"
-              id="font-family"
-              name="font-family"
-              value="EB Garamond"
-              options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
-            />
-            <div class="label">Font Size</div>
-            <.input
-              phx-change={JS.dispatch("lis:set-font-size")}
-              class="w-full hover:bg-base-300 rounded"
-              type="select"
-              id="font-size"
-              name="font-size"
-              value="100"
-              options={["100%": 100, "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
-            />
-          </li>
-        </ul>
-      </div>
     </header>
 
     <main class="px-4 py-20 sm:px-6 lg:px-8">
@@ -145,33 +118,16 @@ defmodule LISWeb.Layouts do
   """
   def theme_toggle(assigns) do
     ~H"""
-    <div class="card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
-      <div class="absolute w-1/3 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=light]_&]:left-1/3 [[data-theme=dark]_&]:left-2/3 transition-[left]" />
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="system"
-      >
-        <.icon name="hero-computer-desktop-micro" class="size-4 opacity-75 hover:opacity-100" />
-      </button>
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="light"
-      >
-        <.icon name="hero-sun-micro" class="size-4 opacity-75 hover:opacity-100" />
-      </button>
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="dark"
-      >
-        <.icon name="hero-moon-micro" class="size-4 opacity-75 hover:opacity-100" />
-      </button>
-    </div>
+    <.input
+      id="theme-toggle"
+      name="theme-toggle"
+      type="select"
+      label="Theme"
+      class="w-full hover:bg-base-300 rounded"
+      value="system"
+      options={[System: "system", Light: "light", Dark: "dark"]}
+      phx-change={JS.dispatch("phx:set-theme")}
+    />
     """
   end
 end

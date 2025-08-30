@@ -62,6 +62,30 @@ defmodule LISWeb.UserLive.Settings do
           Save Password
         </.button>
       </.form>
+
+      <div class="divider" />
+
+      <LISWeb.Layouts.theme_toggle />
+      <.input
+        phx-change={JS.dispatch("lis:set-font-family")}
+        class="w-full hover:bg-base-300 rounded"
+        type="select"
+        label="Font Family"
+        id="font-family"
+        name="font-family"
+        value="EB Garamond"
+        options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
+      />
+      <.input
+        phx-change={JS.dispatch("lis:set-font-size")}
+        class="w-full hover:bg-base-300 rounded"
+        type="select"
+        label="Font Size"
+        id="font-size"
+        name="font-size"
+        value="100"
+        options={["100%": 100, "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
+      />
     </Layouts.app>
     """
   end
