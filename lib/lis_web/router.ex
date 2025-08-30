@@ -54,6 +54,11 @@ defmodule LISWeb.Router do
       on_mount: [{LISWeb.UserAuth, :require_authenticated}] do
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
+      live "/persons", PersonLive.Index, :index
+      live "/persons/new", PersonLive.Index, :new
+      live "/persons/:id", PersonLive.Show, :show
+      live "/persons/:id/edit", PersonLive.Index, :edit
+      live "/persons/:id/show/edit", PersonLive.Show, :edit
     end
 
     post "/users/update-password", UserSessionController, :update_password
@@ -67,11 +72,6 @@ defmodule LISWeb.Router do
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new
-      live "/persons", PersonLive.Index, :index
-      live "/persons/new", PersonLive.Index, :new
-      live "/persons/:id", PersonLive.Show, :show
-      live "/persons/:id/edit", PersonLive.Index, :edit
-      live "/persons/:id/show/edit", PersonLive.Show, :edit
     end
 
     post "/users/log-in", UserSessionController, :create
