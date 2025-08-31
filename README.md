@@ -135,6 +135,8 @@ Now you can visit [`localhost`](https://localhost) from your browser.
 
 ## Navigating the Demo App
 
+Note: this application supports Bring Your Own TLS-Certificate out-of-the-box. For the purposes of demonstration, a self-signed certificate is used. Browsers will complain about this, but most will offer the user an option to proceed to the "unsafe" site. Click this option to proceed to the Demo.
+
 When you first visit the root page, `/`, you will be asked to log in.
 
 If you have not yet registered your email address, click the `Sign up` link.
@@ -143,16 +145,25 @@ Enter your email address and click `Create an account`.
 
 In the current production version of the application, emails are logged in full to the console. View this output and click the link "sent" in the email to log in.
 
-Choose to remain logged in after the session ends or to stay logged in until you log out.
+Choose to remain logged in or to have your session log you out. If you choose to remain logged in, you will be logged out after 14 days of inactivity for security.
 
-Once registered, you can log in redirected to the data entry page, `/persons`.
+Once logged in, you will be redirected to the data entry page, `/persons`.
 
-The data entry page displays a form for entering demographic data about a person.
+The data entry page displays a listing of all persons entered by the current user (your email, in this case).
+
+Click the `New Person` button to bring up the person entry form.
 
 Tooltip errors appear when you click the `Save` button without any information in the `Name` or `Title` fields.
 
-Clicking the `List` button takes you to the `/persons` endpoint without saving any information entered into the form.
+Clicking the `Save` button with data in the required fields will result in a new `Person` added into the system. Once saved, the data is appended to the bottom of the persons listing. The newly created person data is also displayed in a card above the persons listing, for convenience.
 
-Clicking the `Save` button with data in the required fields will result in a new `Person` added into the system. You will be redirected to a confirmation page displaying the newly entered information with a table of previous entries.
+On the `/persons` page, clicking any row in the table of `Person`s will take you to a page displaying only that `Person`'s information.
 
-On the `/persons` page, clicking any value under the `Name` column in the table of `Person`s will take you to a page displaying only that `Person`'s information.
+Editing a `Person` is supported on both the `/persons` page and the `/persons/:id` page.
+
+On the `/persons` page, each row contains an `Edit` action and a `Delete` action.
+
+  - Clicking the `Edit` action on a given row brings up the `Person` data entry form, pre-populated with the row's data. Saving updated values in this form will update the `Person` record in the database and these changes will be reflected in the `/persons` listing immediately.
+  - Clicking the `Delete` action results in the `Person` record being deleted from the database and from the user interface.
+
+On the `/persons/:id` page, clicking the `Edit` button brings up the same data entry form as on the `/persons` page, pre-populated with the user's data, synchronized with the database on `Save`, and reflected on the page afterward.
