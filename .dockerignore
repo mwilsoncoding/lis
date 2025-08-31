@@ -60,3 +60,6 @@ erl_crash.dump
 
 # Local env files
 /rel/overlays/*.local.env
+
+# SSL certificates (if any)
+priv/cert

@@ -63,6 +63,7 @@ defmodule LIS.MixProject do
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:swoosh, "~> 1.16"},
+      {:req, "~> 0.4"},
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},

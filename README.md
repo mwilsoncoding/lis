@@ -18,8 +18,22 @@ Steps:
 - A new tab will open where your codespace is created.
 - Once the editor finishes loading, execute the following commands to build and start the server:
   ```console
-  MIX_ENV=prod \
-    mix do phx.digest + release 
+  mkdir -p priv/cert
+  openssl req \
+    -x509 \
+    -newkey rsa:4096 \
+    -keyout priv/cert/selfsigned_key.pem \
+    -out priv/cert/selfsigned.pem \
+    -sha256 \
+    -days 3650 \
+    -noenc \
+    -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname" \
+    -subj "/CN=localhost"
+  MIX_ENV=prod mix phx.digest
+  MIX_ENV=prod mix release --overwrite
+  LIS_SSL_KEY_PATH=$(pwd)/priv/cert/selfsigned_key.pem \
+  LIS_SSL_CERT_PATH=$(pwd)/priv/cert/selfsigned.pem \
+  PHX_HOST=localhost \
   DATABASE_PATH=/tmp/lis/lis.db \
   SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
   _build/prod/rel/lis/bin/server
@@ -28,7 +42,7 @@ Steps:
 To visit the application in your browser:
 
 - Click the `PORTS` tab in the code editor.
-- Find port 4000 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
+- Find port 443 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
 - A new tab will open connected to the running application on the correct port.
 
 #### Codespaces - Teardown
@@ -48,17 +62,33 @@ Steps:
 - Execute the following commands to build and start the server:
 
   ```console
+  mkdir -p priv/cert
+  openssl req \
+    -x509 \
+    -newkey rsa:4096 \
+    -keyout priv/cert/selfsigned_key.pem \
+    -out priv/cert/selfsigned.pem \
+    -sha256 \
+    -days 3650 \
+    -noenc \
+    -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname" \
+    -subj "/CN=localhost"
   docker build -t lis .
   docker run \
     --rm \
     -it \
-    -p 4000:4000 \
+    --mount "type=bind,source=$(pwd)/priv/cert,target=/cert" \
+    -p 80:80 \
+    -p 443:443 \
+    -e LIS_SSL_KEY_PATH=/cert/selfsigned_key.pem \
+    -e LIS_SSL_CERT_PATH=/cert/selfsigned.pem \
+    -e PHX_HOST=localhost \
     -e DATABASE_PATH=/tmp/lis/lis.db \
     -e SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
     lis
   ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost`](https://localhost) from your browser.
 
 #### Docker - Teardown
 
@@ -76,14 +106,28 @@ Steps:
 - `cd` into the new directory.
 - Execute the following commands to build and start the server:
   ```console
-  MIX_ENV=prod \
-    mix do phx.digest + release 
+  mkdir -p priv/cert
+  openssl req \
+    -x509 \
+    -newkey rsa:4096 \
+    -keyout priv/cert/selfsigned_key.pem \
+    -out priv/cert/selfsigned.pem \
+    -sha256 \
+    -days 3650 \
+    -noenc \
+    -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname" \
+    -subj "/CN=localhost"
+  MIX_ENV=prod mix do phx.digest
+  MIX_ENV=prod mix do release --overwrite
+  LIS_SSL_KEY_PATH=$(pwd)/priv/cert/selfsigned_key.pem \
+  LIS_SSL_CERT_PATH=$(pwd)/priv/cert/selfsigned.pem \
+  PHX_HOST=localhost \
   DATABASE_PATH=/tmp/lis/lis.db \
   SECRET_KEY_BASE='kgxW7cyVxA4AjPYonbeQ6fngc3G9Gbs0KzoskpKlXEDu7l03Ow80gnubD/56yAPr' \
   _build/prod/rel/lis/bin/server
   ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost`](https://localhost) from your browser.
 
 #### Bare Metal - Teardown
 
@@ -91,7 +135,17 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Navigating the Demo App
 
-When you first visit the root page, `/`, you will be redirected to the data entry page, `/persons/new`.
+When you first visit the root page, `/`, you will be asked to log in.
+
+If you have not yet registered your email address, click the `Sign up` link.
+
+Enter your email address and click `Create an account`.
+
+In the current production version of the application, emails are logged in full to the console. View this output and click the link "sent" in the email to log in.
+
+Choose to remain logged in after the session ends or to stay logged in until you log out.
+
+Once registered, you can log in redirected to the data entry page, `/persons`.
 
 The data entry page displays a form for entering demographic data about a person.
 
