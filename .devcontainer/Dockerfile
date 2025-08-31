@@ -58,6 +58,9 @@ RUN curl -sfL https://github.com/evilmartians/lefthook/releases/download/v${LEFT
 ARG YAMLFMT_VERSION
 RUN curl -L https://github.com/google/yamlfmt/releases/download/v${YAMLFMT_VERSION}/yamlfmt_${YAMLFMT_VERSION}_Linux_x86_64.tar.gz | tar -C /usr/local/bin -xzf - yamlfmt
 
+RUN curl -L https://github.com/elixir-lang/expert/releases/download/nightly/expert_linux_amd64 -o /usr/local/bin/expert && \
+    chmod +x /usr/local/bin/expert
+
 RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
