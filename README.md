@@ -8,8 +8,6 @@ There are many ways to run this application. Here are 3 options:
 
 ### Codespaces
 
-Note: Codespaces service disruptions may cause 502s unrelated to the demo application's performance.
-
 Steps:
 
 - Click the `Code` button on the main page of this repository.
@@ -42,8 +40,13 @@ Steps:
 To visit the application in your browser:
 
 - Click the `PORTS` tab in the code editor.
-- Find port 443 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
+- Find port 80 and click the globe icon in the Forwarded Address (the alt text for this icon reads `Open in Browser`).
 - A new tab will open connected to the running application on the correct port.
+
+Notes:
+
+- Codespaces service disruptions may cause 502s unrelated to the demo application's performance.
+- Port 443 would be used in production, but this demo uses self-signed certificates, which cause GitHub's security measures to 502 access to this port.
 
 #### Codespaces - Teardown
 
