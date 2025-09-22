@@ -70,7 +70,7 @@ defmodule LISWeb.UserLive.Settings do
         phx-change={JS.dispatch("lis:set-font-face")}
         class="w-full hover:bg-base-300 rounded"
         type="select"
-        label="Font face"
+        label="Font"
         id="font-face"
         name="font-face"
         value="EB Garamond"

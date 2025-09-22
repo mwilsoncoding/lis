@@ -1,22 +1,22 @@
 const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace"
 
-const setfontFace = (face) => {
+const setFontFace = (face) => {
   localStorage.setItem(LOCAL_STORAGE_FONT_FACE_KEY, face)
-  document.body.style.fontFace = face;
+  document.body.style.fontFamily = face;
 };
 
 window.addEventListener("storage", (e) => {
   e.key === LOCAL_STORAGE_FONT_FACE_KEY;
-  setfontFace(e.newValue || "");
+  setFontFace(e.newValue || "");
 });
 
 window.addEventListener("lis:set-font-face", (event) => {
-  setfontFace(event.target.value);
+  setFontFace(event.target.value);
 });
 
 window.addEventListener("load", () => {
   const fontFace = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY)
-  setfontFace(fontFace ? fontFace : '');
+  setFontFace(fontFace ? fontFace : '');
 });
 
 const LOCAL_STORAGE_FONT_SIZE_KEY = "lis:fontSize"
