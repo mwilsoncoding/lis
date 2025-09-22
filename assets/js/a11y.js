@@ -5,7 +5,10 @@ const setFontFamily = (family) => {
   document.body.style.fontFamily = family;
 };
 
-window.addEventListener("storage", (e) => e.key === LOCAL_STORAGE_FONT_FAMILY_KEY && setFontFamily(e.newValue || ""));
+window.addEventListener("storage", (e) => {
+  e.key === LOCAL_STORAGE_FONT_FAMILY_KEY;
+  setFontFamily(e.newValue || "");
+});
 
 window.addEventListener("lis:set-font-family", (event) => {
   setFontFamily(event.target.value);
