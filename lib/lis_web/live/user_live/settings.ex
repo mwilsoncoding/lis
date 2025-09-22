@@ -67,7 +67,7 @@ defmodule LISWeb.UserLive.Settings do
 
       <LISWeb.Layouts.theme_toggle />
       <.input
-        phx-change={JS.dispatch("lis:set-font-face")}
+        phx-change={JS.dispatch("lis:fontFace")}
         class="w-full hover:bg-base-300 rounded"
         type="select"
         label="Font"
@@ -77,7 +77,7 @@ defmodule LISWeb.UserLive.Settings do
         options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
       />
       <.input
-        phx-change={JS.dispatch("lis:set-font-size")}
+        phx-change={JS.dispatch("lis:fontSize")}
         class="w-full hover:bg-base-300 rounded"
         type="select"
         label="Font Size"

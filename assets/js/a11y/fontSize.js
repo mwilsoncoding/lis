@@ -10,7 +10,7 @@ window.addEventListener("storage", (e) => {
   setFontSize(e.newValue || "");
 });
 
-window.addEventListener("lis:set-font-size", (event) => {
+window.addEventListener(LOCAL_STORAGE_FONT_SIZE_KEY, (event) => {
   setFontSize(event.target.value);
 });
 

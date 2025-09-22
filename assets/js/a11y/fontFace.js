@@ -10,7 +10,7 @@ window.addEventListener("storage", (e) => {
   setFontFace(e.newValue || "");
 });
 
-window.addEventListener("lis:set-font-face", (event) => {
+window.addEventListener(LOCAL_STORAGE_FONT_FACE_KEY, (event) => {
   setFontFace(event.target.value);
 });
 
