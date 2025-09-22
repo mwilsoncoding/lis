@@ -9,7 +9,6 @@ services:
         - LEFTHOOK_VERSION=${LEFTHOOK_VERSION}
         - OTP_VERSION=${OTP_VERSION}
         - YAMLFMT_VERSION=${YAMLFMT_VERSION}
-        - PSQL_VERSION=${POSTGRES_VERSION}
         - WATCHMAN_VERSION=${WATCHMAN_VERSION}
     env_file:
       - devcontainer.env

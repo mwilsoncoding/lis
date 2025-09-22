@@ -21,6 +21,7 @@ RUN apt-get update \
       sqlite3 \
       shellcheck \
       sudo \
+      unzip \
       2>&1
 
 RUN if id -u ${USERNAME} > /dev/null 2>&1 ; then \
