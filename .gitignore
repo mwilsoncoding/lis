@@ -47,6 +47,7 @@ npm-debug.log
 
 # LSP
 /.elixir_ls
+/.expert
 
 # Local env files
 /rel/overlays/*.local.env

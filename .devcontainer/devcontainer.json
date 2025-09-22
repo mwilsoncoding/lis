@@ -22,7 +22,7 @@
         "tomoki1207.pdf"
       ],
       "settings": {
-        "lexical.server.releasePathOverride": "expert",
+        // "lexical.server.releasePathOverride": "/usr/local/bin/expert",
         "terminal.integrated.defaultProfile.linux": "bash",
         "files.associations": {
           "*.css": "tailwindcss"

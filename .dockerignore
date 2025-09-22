@@ -57,6 +57,7 @@ erl_crash.dump
 
 # LSP
 /.elixir_ls
+/.expert
 
 # Local env files
 /rel/overlays/*.local.env
