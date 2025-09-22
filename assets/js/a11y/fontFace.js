@@ -1,7 +1,7 @@
-const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace"
+const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace";
 
 const setFontFace = (face) => {
-  localStorage.setItem(LOCAL_STORAGE_FONT_FACE_KEY, face)
+  localStorage.setItem(LOCAL_STORAGE_FONT_FACE_KEY, face);
   document.body.style.fontFamily = face;
 };
 
@@ -14,5 +14,5 @@ window.addEventListener("lis:set-font-face", (event) => {
   setFontFace(event.target.value);
 });
 
-const fontFace = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY)
+const fontFace = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
 setFontFace(fontFace ? fontFace : '');

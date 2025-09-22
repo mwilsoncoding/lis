@@ -1,7 +1,7 @@
-const LOCAL_STORAGE_FONT_SIZE_KEY = "lis:fontSize"
+const LOCAL_STORAGE_FONT_SIZE_KEY = "lis:fontSize";
 
 const setFontSize = (percent) => {
-  localStorage.setItem(LOCAL_STORAGE_FONT_SIZE_KEY, `${percent}`)
+  localStorage.setItem(LOCAL_STORAGE_FONT_SIZE_KEY, `${percent}`);
   document.documentElement.style.fontSize = `${percent}%`;
 };
 
@@ -14,5 +14,5 @@ window.addEventListener("lis:set-font-size", (event) => {
   setFontSize(event.target.value);
 });
 
-const fontSize = localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY)
+const fontSize = localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY);
 setFontSize(fontSize ? fontSize : '');
