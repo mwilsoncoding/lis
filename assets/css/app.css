@@ -15,7 +15,7 @@
   background-color: oklch(30.33% 0.016 252.42);
 }
 
-#font-family option {
+#font-face option {
   background-color: var(--color-base-200);
 }
 

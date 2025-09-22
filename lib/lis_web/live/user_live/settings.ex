@@ -67,12 +67,12 @@ defmodule LISWeb.UserLive.Settings do
 
       <LISWeb.Layouts.theme_toggle />
       <.input
-        phx-change={JS.dispatch("lis:set-font-family")}
+        phx-change={JS.dispatch("lis:set-font-face")}
         class="w-full hover:bg-base-300 rounded"
         type="select"
-        label="Font Family"
-        id="font-family"
-        name="font-family"
+        label="Font face"
+        id="font-face"
+        name="font-face"
         value="EB Garamond"
         options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
       />
