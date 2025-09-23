@@ -3,7 +3,7 @@ import {
   STORAGE_EVENT
 } from "./constants"
 
-const DEFAULT_FONT_FACE = "System"
+const DEFAULT_FONT_FACE = "system"
 const FONT_FACE_SELECT_ELEMENT_ID = "accessibility-modal-select-font-face";
 const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace";
 

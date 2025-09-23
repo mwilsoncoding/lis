@@ -3,7 +3,7 @@ import {
   STORAGE_EVENT
 } from "./constants"
 
-const DEFAULT_FONT_SIZE = "System"
+const DEFAULT_FONT_SIZE = "system"
 const FONT_SIZE_SELECT_ELEMENT_ID = "accessibility-modal-select-font-size";
 const LOCAL_STORAGE_FONT_SIZE_KEY = "lis:fontSize";
 

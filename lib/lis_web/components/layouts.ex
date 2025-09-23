@@ -108,7 +108,13 @@ defmodule LISWeb.Layouts do
         id={"#{@id}-select-font-face"}
         name="font-face"
         value=""
-        options={["System", "EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
+        options={[
+          Default: "system",
+          "EB Garamond": "EB Garamond",
+          "Sans-serif": "Sans-serif",
+          Serif: "Serif",
+          OpenDyslexic: "OpenDyslexic"
+        ]}
       />
       <.input
         phx-change={JS.dispatch(@font_size_event)}
@@ -118,7 +124,7 @@ defmodule LISWeb.Layouts do
         id={"#{@id}-select-font-size"}
         name="font-size"
         value=""
-        options={[System: "System", "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
+        options={[Default: "system", "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
       />
     </.modal>
     """
@@ -185,7 +191,7 @@ defmodule LISWeb.Layouts do
       label="Theme"
       class="w-full hover:bg-base-300 rounded"
       value=""
-      options={[System: "system", Light: "light", Dark: "dark"]}
+      options={[Default: "system", Light: "light", Dark: "dark"]}
       phx-change={JS.dispatch(@theme_event)}
     />
     """
