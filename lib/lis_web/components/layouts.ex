@@ -64,7 +64,63 @@ defmodule LISWeb.Layouts do
       </div>
     </main>
 
+    <.accessibility_menu />
+
     <.flash_group flash={@flash} />
+    """
+  end
+
+  attr :id, :string, default: "accessibility-modal", doc: "the optional id of the modal"
+
+  attr :font_face_event, :string,
+    default: "lis:fontFace",
+    doc: "the client-side JS event name to dispatch for updating the font face"
+
+  attr :font_size_event, :string,
+    default: "lis:fontSize",
+    doc: "the client-side JS event name to dispatch for updating the font size"
+
+  attr :update_selections_event, :string,
+    default: "lis:updateA11ySelections",
+    doc:
+      "the client-side JS event name to dispatch to trigger accessibility settings selections (overrides the value option supplied to the inputs with client-side localStorage values, if present)"
+
+  def accessibility_menu(assigns) do
+    ~H"""
+    <.button
+      id={"#{@id}-btn"}
+      phx-click={show_modal(JS.dispatch(@update_selections_event), @id)}
+      class="btn btn-info fixed bottom-5 left-5"
+    >
+      Accessibility Menu
+    </.button>
+
+    <.modal
+      id={@id}
+      content_class="overflow-auto"
+    >
+      <.theme_toggle />
+      <.input
+        phx-change={JS.dispatch(@font_face_event)}
+        class="w-full hover:bg-base-300 rounded"
+        type="select"
+        label="Font"
+        id={"#{@id}-select-font-face"}
+        name="font-face"
+        value=""
+        options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
+      />
+      <.input
+        phx-change={JS.dispatch(@font_size_event)}
+        class="w-full hover:bg-base-300 rounded"
+        type="select"
+        label="Font Size"
+        id={"#{@id}-select-font-size"}
+        name="font-size"
+        value=""
+        options={["100%": 100, "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
+      />
+    </.modal>
     """
   end
 
@@ -124,7 +180,7 @@ defmodule LISWeb.Layouts do
       type="select"
       label="Theme"
       class="w-full hover:bg-base-300 rounded"
-      value="system"
+      value=""
       options={[System: "system", Light: "light", Dark: "dark"]}
       phx-change={JS.dispatch("phx:set-theme")}
     />

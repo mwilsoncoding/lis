@@ -1,8 +1,22 @@
+import {
+  UPDATE_ACCESSIBILITY_SELECTIONS_EVENT
+} from "./constants"
+
 const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace";
 
 const setFontFace = (face) => {
   localStorage.setItem(LOCAL_STORAGE_FONT_FACE_KEY, face);
   document.body.style.fontFamily = face;
+};
+
+const setFontFaceSelection = () => {
+  const selection = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
+  if (selection) {
+    const select = document.getElementById("accessibility-modal-select-font-face");
+    if (select) {
+      select.value = selection;
+    }
+  }
 };
 
 window.addEventListener("storage", (e) => {
@@ -13,6 +27,8 @@ window.addEventListener("storage", (e) => {
 window.addEventListener(LOCAL_STORAGE_FONT_FACE_KEY, (event) => {
   setFontFace(event.target.value);
 });
+
+window.addEventListener(UPDATE_ACCESSIBILITY_SELECTIONS_EVENT, setFontFaceSelection);
 
 const fontFace = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
 setFontFace(fontFace ? fontFace : '');

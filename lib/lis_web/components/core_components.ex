@@ -51,6 +51,7 @@ defmodule LISWeb.CoreComponents do
   """
   attr :id, :string, required: true
   attr :show, :boolean, default: false
+  attr :content_class, :string, default: ""
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
 
@@ -95,7 +96,7 @@ defmodule LISWeb.CoreComponents do
                   <.icon name="hero-x-mark-solid" class="h-5 w-5 bg-base-content" />
                 </button>
               </div>
-              <div id={"#{@id}-content"}>
+              <div id={"#{@id}-content"} class={@content_class}>
                 {render_slot(@inner_block)}
               </div>
             </.focus_wrap>
