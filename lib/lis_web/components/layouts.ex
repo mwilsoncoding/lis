@@ -108,7 +108,7 @@ defmodule LISWeb.Layouts do
         id={"#{@id}-select-font-face"}
         name="font-face"
         value=""
-        options={["EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
+        options={["System", "EB Garamond", "Sans-serif", "Serif", "OpenDyslexic"]}
       />
       <.input
         phx-change={JS.dispatch(@font_size_event)}
@@ -118,7 +118,7 @@ defmodule LISWeb.Layouts do
         id={"#{@id}-select-font-size"}
         name="font-size"
         value=""
-        options={["100%": 100, "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
+        options={[System: "System", "125%": 125, "150%": 150, "200%": 200, "350%": 350, "500%": 500]}
       />
     </.modal>
     """
@@ -172,6 +172,10 @@ defmodule LISWeb.Layouts do
 
   See <head> in root.html.heex which applies the theme before page load.
   """
+  attr :theme_event, :string,
+    default: "lis:theme",
+    doc: "the client-side JS event name to dispatch for updating the theme"
+
   def theme_toggle(assigns) do
     ~H"""
     <.input
@@ -182,7 +186,7 @@ defmodule LISWeb.Layouts do
       class="w-full hover:bg-base-300 rounded"
       value=""
       options={[System: "system", Light: "light", Dark: "dark"]}
-      phx-change={JS.dispatch("phx:set-theme")}
+      phx-change={JS.dispatch(@theme_event)}
     />
     """
   end
