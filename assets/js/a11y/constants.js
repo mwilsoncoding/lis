@@ -1,3 +1,3 @@
 // Shared constants
 
-export const UPDATE_ACCESSIBILITY_SELECTIONS_EVENT = "lis:updateA11ySelections";
+export const LOAD_ACCESSIBILITY_SELECTIONS_EVENT = "lis:loadA11ySelections";

@@ -81,7 +81,7 @@ defmodule LISWeb.Layouts do
     doc: "the client-side JS event name to dispatch for updating the font size"
 
   attr :update_selections_event, :string,
-    default: "lis:updateA11ySelections",
+    default: "lis:loadA11ySelections",
     doc:
       "the client-side JS event name to dispatch to trigger accessibility settings selections (overrides the value option supplied to the inputs with client-side localStorage values, if present)"
 

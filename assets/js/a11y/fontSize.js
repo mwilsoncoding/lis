@@ -1,5 +1,5 @@
 import {
-  UPDATE_ACCESSIBILITY_SELECTIONS_EVENT
+  LOAD_ACCESSIBILITY_SELECTIONS_EVENT
 } from "./constants"
 
 const LOCAL_STORAGE_FONT_SIZE_KEY = "lis:fontSize";
@@ -9,7 +9,7 @@ const setFontSize = (percent) => {
   document.documentElement.style.fontSize = `${percent}%`;
 };
 
-const setFontSizeSelection = () => {
+const loadFontSizeSelection = () => {
   const selection = localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY);
   if (selection) {
     const select = document.getElementById("accessibility-modal-select-font-size");
@@ -28,7 +28,7 @@ window.addEventListener(LOCAL_STORAGE_FONT_SIZE_KEY, (event) => {
   setFontSize(event.target.value);
 });
 
-window.addEventListener(UPDATE_ACCESSIBILITY_SELECTIONS_EVENT, setFontSizeSelection);
+window.addEventListener(LOAD_ACCESSIBILITY_SELECTIONS_EVENT, loadFontSizeSelection);
 
 const fontSize = localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY);
 setFontSize(fontSize ? fontSize : '');

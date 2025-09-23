@@ -1,5 +1,5 @@
 import {
-  UPDATE_ACCESSIBILITY_SELECTIONS_EVENT
+  LOAD_ACCESSIBILITY_SELECTIONS_EVENT
 } from "./constants"
 
 const LOCAL_STORAGE_FONT_FACE_KEY = "lis:fontFace";
@@ -9,7 +9,7 @@ const setFontFace = (face) => {
   document.body.style.fontFamily = face;
 };
 
-const setFontFaceSelection = () => {
+const loadFontFaceSelection = () => {
   const selection = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
   if (selection) {
     const select = document.getElementById("accessibility-modal-select-font-face");
@@ -28,7 +28,7 @@ window.addEventListener(LOCAL_STORAGE_FONT_FACE_KEY, (event) => {
   setFontFace(event.target.value);
 });
 
-window.addEventListener(UPDATE_ACCESSIBILITY_SELECTIONS_EVENT, setFontFaceSelection);
+window.addEventListener(LOAD_ACCESSIBILITY_SELECTIONS_EVENT, loadFontFaceSelection);
 
 const fontFace = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
 setFontFace(fontFace ? fontFace : '');
