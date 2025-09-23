@@ -25,6 +25,10 @@ const loadFontSizeSelection = () => {
   select.value = selection;
 };
 
+const alreadySet = () => {
+  return document.documentElement.style.fontSize !== "";
+};
+
 window.addEventListener(STORAGE_EVENT, (e) => {
   e.key === LOCAL_STORAGE_FONT_SIZE_KEY;
   setFontSize(e.newValue || DEFAULT_FONT_SIZE);
@@ -36,4 +40,6 @@ window.addEventListener(LOCAL_STORAGE_FONT_SIZE_KEY, (event) => {
 
 window.addEventListener(LOAD_ACCESSIBILITY_SELECTIONS_EVENT, loadFontSizeSelection);
 
-setFontSize(localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY) || DEFAULT_FONT_SIZE);
+if (!alreadySet()) {
+  setFontSize(localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY) || DEFAULT_FONT_SIZE);
+}

@@ -25,6 +25,10 @@ const loadFontFaceSelection = () => {
   select.value = selection;
 };
 
+const alreadySet = () => {
+  return document.body.style.fontFamily !== "";
+};
+
 window.addEventListener(STORAGE_EVENT, (e) => {
   e.key === LOCAL_STORAGE_FONT_FACE_KEY;
   setFontFace(e.newValue || DEFAULT_FONT_FACE);
@@ -36,4 +40,6 @@ window.addEventListener(LOCAL_STORAGE_FONT_FACE_KEY, (event) => {
 
 window.addEventListener(LOAD_ACCESSIBILITY_SELECTIONS_EVENT, loadFontFaceSelection);
 
-setFontFace(localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY) || DEFAULT_FONT_FACE);
+if (!alreadySet()) {
+  setFontFace(localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY) || DEFAULT_FONT_FACE);
+}

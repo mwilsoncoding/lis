@@ -26,18 +26,21 @@ const loadThemeSelection = () => {
   select.value = selection;
 };
 
+const alreadySet = () => {
+  return document.documentElement.hasAttribute(THEME_ATTRIBUTE);
+};
+
 window.addEventListener(STORAGE_EVENT, (e) => {
   e.key === LOCAL_STORAGE_THEME_KEY;
   setTheme(e.newValue || DEFAULT_THEME);
 });
 
 window.addEventListener(LOCAL_STORAGE_THEME_KEY, (event) => {
-    console.log("theme event received")
   setTheme(event.target.value);
 });
 
 window.addEventListener(LOAD_ACCESSIBILITY_SELECTIONS_EVENT, loadThemeSelection);
 
-if (!document.documentElement.hasAttribute(THEME_ATTRIBUTE)) {
+if (!alreadySet()) {
   setTheme(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || DEFAULT_THEME);
 }
