@@ -11,12 +11,10 @@ const setFontSize = (percent) => {
 
 const loadFontSizeSelection = () => {
   const selection = localStorage.getItem(LOCAL_STORAGE_FONT_SIZE_KEY);
-  if (selection) {
-    const select = document.getElementById("accessibility-modal-select-font-size");
-    if (select) {
-      select.value = selection;
-    }
-  }
+  if (!selection) return;
+  const select = document.getElementById("accessibility-modal-select-font-size");
+  if (!select) return;
+  select.value = selection;
 };
 
 window.addEventListener("storage", (e) => {

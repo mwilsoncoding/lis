@@ -11,12 +11,10 @@ const setFontFace = (face) => {
 
 const loadFontFaceSelection = () => {
   const selection = localStorage.getItem(LOCAL_STORAGE_FONT_FACE_KEY);
-  if (selection) {
-    const select = document.getElementById("accessibility-modal-select-font-face");
-    if (select) {
-      select.value = selection;
-    }
-  }
+  if (!selection) return;
+  const select = document.getElementById("accessibility-modal-select-font-face");
+  if (!select) return;
+  select.value = selection;
 };
 
 window.addEventListener("storage", (e) => {
